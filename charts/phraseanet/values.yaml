@@ -244,6 +244,22 @@ app:
       limits:
         cpu: "2000m"
         memory: "4096Mi"
+  cronjob:
+    cleanusers:
+      launch: false
+      cron: 30 2 * * *
+      cmd: bin/maintenance clean:user --inactivity_period=1 --grace_duration=1 --max_relances=1 --dry-run 
+      image: phraseanet-worker
+    validationreminder:
+      launch: false
+      cron: * 1-24/2 * * *
+      cmd: bin/console validation:remind --help
+      image: phraseanet-worker
+    dbdump: 
+      launch: false
+      cron: 10 5 * * *
+      cmd: bin/console system:backup-db -b backup/
+      image: phraseanet-worker
   pvc:
     data:
       name: phraseanet-datas
