@@ -28,4 +28,4 @@ dependencies:
   - name: zippy 
     version: "0.1.0"
     repository: "https://alchemy-fr.github.io/zippy-svc/"
-    condition: expose.zippy.enabled, databox.zippy.enabled
+    condition: zippy.enabled
