@@ -64,6 +64,13 @@ rabbitmq:
   default_pass: "{{ .Values.app.phraseanet_rabbitmq_pass }}"
   default_vhost: "{{ .Values.app.phraseanet_rabbitmq_vhost }}"
   heartbeat: 60
+  persistence:
+    enabled: true
+    existingClaim:
+    storageClass:
+    annotations: {}
+    accessMode: ReadWriteOnce
+    size: 1Gi
   resources:
     requests:
       cpu: "50m"
