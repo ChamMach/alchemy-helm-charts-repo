@@ -45,4 +45,6 @@ spec:
           value: {{ tpl .Values.rabbitmq.default_vhost $ | quote }}
         - name: RABBITMQ_HEARTBEAT
           value: {{ .Values.rabbitmq.heartbeat | quote }}
+        - name: RABBITMQ_NODENAME
+          value: {{ tpl .Values.rabbitmq.node_name $ | quote }}
 {{- end }}
